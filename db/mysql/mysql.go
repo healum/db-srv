@@ -77,7 +77,7 @@ func (d *mysqlDB) Init(mdb *mdb.Database) error {
 	// TODO: we really shouldn't create the databases automatically
 	// Should be external managed process.
 	// Maybe a handler on this service
-	if _, err := conn.Exec("CREATE DATABASE IF NOT EXISTS " + mdb.Name); err != nil {
+	if _, err := conn.Exec("CREATE DATABASE IF NOT EXISTS " + "`" + mdb.Name + + "`"); err != nil {
 		return err
 	}
 
