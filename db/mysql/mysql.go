@@ -77,7 +77,7 @@ func (d *mysqlDB) Init(mdb *mdb.Database) error {
 	// TODO: we really shouldn't create the databases automatically
 	// Should be external managed process.
 	// Maybe a handler on this service
-	if _, err := conn.Exec("CREATE DATABASE IF NOT EXISTS " + "`" + mdb.Name + + "`"); err != nil {
+	if _, err := conn.Exec("CREATE DATABASE IF NOT EXISTS " + "`" + mdb.Name + +"`"); err != nil {
 		return err
 	}
 
@@ -201,7 +201,7 @@ func (d *mysqlDB) Search(md map[string]string, limit, offset int64) ([]*mdb.Reco
 		query += " limit ? offset ?"
 		query = fmt.Sprintf(searchMetadataQ, d.name, d.table) + query
 
-		// doe the query
+		// do the query
 		rows, err = d.conn.Query(query, args...)
 	} else {
 		rows, err = d.queries["search"].Query(limit, offset)
